@@ -1,0 +1,28 @@
+costmap:
+    plugins:
+      - name: obstacles_layer
+        type: "costmap_2d::ObstacleLayer"
+        enabled: true
+        observation_sources: laser_scan_sensor  
+        laser_scan_sensor: {sensor_frame: base_scan_link, data_type: LaserScan, topic: /scan, marking: true, clearing: false}
+
+      - name: inflation_layer
+        type: "costmap_2d::InflationLayer"
+        enabled: false
+        cost_scaling_factor: 10.0
+        inflation_radius: 0.10
+
+    global_frame: "map"
+    robot_base_frame: "base_scan_link"
+
+    update_frequency: 20.0
+    publish_frequency: 20.0
+
+    static_map: true
+
+    width: 40.0
+    height: 40.0
+    resolution: 0.05
+    origin_x: -20.
+    origin_y: -20.
+
